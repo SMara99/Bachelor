@@ -35,7 +35,7 @@ class EmbeddingGenerator:
         embedding = embedding.cpu().numpy().flatten()
         return embedding
 
-    def store_embedding(self, image_path: str, category: str, point_id: int):
+    def store_embedding(self, image_path: str, category: str, point_id: int, collection_name: str = "animal_images"):
         # Generate the embedding
         embedding = self.generate_embedding(image_path)
         # Create payload with metadata
@@ -54,7 +54,7 @@ class EmbeddingGenerator:
         )
         # Upload single point to Qdrant
         qdrant_client.upsert(
-            collection_name="animal_images",
+            collection_name=collection_name,
             points=[point]  # Still needs to be a list, even for single point
         )
     # Search similar
@@ -72,6 +72,6 @@ class EmbeddingGenerator:
             return -1
             
 # Example usage
-embedding_generator = EmbeddingGenerator()
-test = embedding_generator.search_similar("C:\\DataSet\\animals\\animals\\dog\\dog_1.jpg")
-print(f"Most similar image ID: {test}")
+# embedding_generator = EmbeddingGenerator()
+# test = embedding_generator.search_similar("C:\\DataSet\\animals\\animals\\dog\\dog_1.jpg")
+# print(f"Most similar image ID: {test}")
