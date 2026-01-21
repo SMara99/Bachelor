@@ -8,6 +8,8 @@ A bachelor project to recognize animals using CLIP embeddings and Qdrant vector 
 
 - Python
 - Qdrant
+- FastAPI
+- Uvicorn
 - Dataset of animal images
 
 ## Installation
@@ -24,7 +26,11 @@ A bachelor project to recognize animals using CLIP embeddings and Qdrant vector 
 ## Project Structure
 animal-recognition/
 ├── src/
-│   └── setup_qdrant.py
+│   ├── setup_qdrant.py
+│   ├── embedding.py
+│   ├── ingest_qdrant.py
+│   ├── search_qdrant.py
+│   └── retrieval.py
 ├── requirements.txt
 ├── README.md
 └── venv/ 
